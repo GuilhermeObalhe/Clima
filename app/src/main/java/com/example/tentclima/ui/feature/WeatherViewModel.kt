@@ -19,13 +19,14 @@ class WeatherViewModel @Inject constructor(
     private val _weatherInfoState = MutableStateFlow(WeatherInfoState())
     val weatherInfoState: StateFlow<WeatherInfoState> = _weatherInfoState.asStateFlow()
 
-    init {
-        getWeatherInfo()
-    }
+    private var _latitude: Double = 0.0
+    private var _longitude: Double = 0.0
 
-    private fun getWeatherInfo() {
+    internal fun getWeatherInfo(latitude: Double, longitude: Double) {
+        _latitude = latitude
+        _longitude = longitude
         viewModelScope.launch {
-            val weatherInfo = weatherRepository.getWeatherData(-19.912998, -43.940933)
+            val weatherInfo = weatherRepository.getWeatherData(latitude, longitude)
             _weatherInfoState.update {
                 it.copy(weatherInfo = weatherInfo)
             }

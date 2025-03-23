@@ -95,4 +95,7 @@ dependencies {
 
     // Tentando inserir Coil
     implementation(libs.coil)
+
+    // Tentando implementar serviço de localização
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 }
