@@ -2,6 +2,8 @@ package com.example.tentclima.data.repository
 
 import android.annotation.SuppressLint
 import com.example.tentclima.data.remote.RemoteDataSource
+import com.example.tentclima.data.remote.response.DailyData
+import com.example.tentclima.data.remote.response.HourlyDataEntry
 import com.example.tentclima.model.WeatherInfo
 import java.time.LocalDate
 import java.time.format.TextStyle
@@ -22,10 +24,33 @@ class WeatherRepositoryImpl @Inject constructor(
         return WeatherInfo(
             locationName = response.name,
             conditionIcon = weather.icon,
-            condition = weather.main,
+            condition = weather.description,
             temperature = response.main.temp.roundToInt(),
             dayOfWeek = LocalDate.now().dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault()),
-            isDay = weather.icon.last() == 'd'
+            isDay = weather.icon.last() == 'd',
+            humidity = response.main.humidity,
+            pressure = response.main.pressure,
+            feelsLike = response.main.feelsLike.roundToInt(),
+            tempMin = response.main.tempMin.roundToInt(),
+            tempMax = response.main.tempMax.roundToInt(),
+            seaLevel = response.main.seaLevel,
+            wind = response.wind,
+            visibility = response.visibility,
+            sunrise = response.sys.sunrise,
+            sunset = response.sys.sunset,
+            hourlyData = getHourlyWeatherData(lat, lng),
+            dailyData = getDailyWeatherData(lat, lng)
         )
+    }
+
+    override suspend fun getHourlyWeatherData(lat: Double, lng: Double): List<HourlyDataEntry> {
+        val response = remoteDataSource.getHourlyWeatherDataResponse(lat, lng)
+        return response.list // Ajuste conforme a estrutura real do response
+    }
+
+    // Previsão diária
+    override suspend fun getDailyWeatherData(lat: Double, lng: Double): List<DailyData> {
+        val response = remoteDataSource.getDailyWeatherDataResponse(lat, lng)
+        return response.list // Ajuste conforme a estrutura real do response
     }
 }
