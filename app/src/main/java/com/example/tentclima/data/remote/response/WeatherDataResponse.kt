@@ -12,6 +12,7 @@ data class WeatherDataResponse(
     val visibility: Int,
     val wind: Wind,
     val rain: Rain? = null,
+    val snow: Snow? = null,
     val clouds: Clouds,
     val dt: Long,
     val sys: Sys,
@@ -71,4 +72,9 @@ data class Sys(
     val country: String,
     val sunrise: Long,
     val sunset: Long
+)
+
+@Serializable
+data class Snow(
+    @SerialName("1h") val oneHour: Double
 )

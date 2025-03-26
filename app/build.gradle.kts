@@ -62,6 +62,9 @@ dependencies {
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -98,4 +101,12 @@ dependencies {
 
     // Tentando implementar serviço de localização
     implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    // Room
+    // Room Database
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler) // Para processador de anotações (Kotlin)
+
+    // Para usar coroutines com Room
+    implementation(libs.androidx.room.ktx.v251)
 }

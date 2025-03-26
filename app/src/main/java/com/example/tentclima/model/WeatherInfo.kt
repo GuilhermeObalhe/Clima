@@ -21,6 +21,7 @@ data class WeatherInfo(
     val visibility: Int,
     val sunrise: Long,
     val sunset: Long,
+    val clouds: Int? = null,
 
     // Previsão horária
     val hourlyData: List<HourlyDataEntry>,

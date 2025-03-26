@@ -19,7 +19,7 @@ data class HourlyDataEntry(
     val weather: List<Weather>,
     @SerialName("clouds") val cloudsData: Clouds,
     @SerialName("wind") val windData: Wind,
-    val visibility: Int,
+    val visibility: Int? = null,
     val pop: Double,
     val rain: RainData? = null,
     val sys: SysData,

@@ -39,7 +39,8 @@ class WeatherRepositoryImpl @Inject constructor(
             sunrise = response.sys.sunrise,
             sunset = response.sys.sunset,
             hourlyData = getHourlyWeatherData(lat, lng),
-            dailyData = getDailyWeatherData(lat, lng)
+            dailyData = getDailyWeatherData(lat, lng),
+            clouds = response.clouds.all
         )
     }
 
@@ -53,4 +54,8 @@ class WeatherRepositoryImpl @Inject constructor(
         val response = remoteDataSource.getDailyWeatherDataResponse(lat, lng)
         return response.list // Ajuste conforme a estrutura real do response
     }
+
+    // Busca lista de cidades
+    override suspend fun searchCities(query: String) =
+        remoteDataSource.searchCities(query)
 }
