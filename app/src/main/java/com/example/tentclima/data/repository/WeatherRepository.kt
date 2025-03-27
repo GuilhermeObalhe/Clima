@@ -1,6 +1,7 @@
 package com.example.tentclima.data.repository
 
 
+import com.example.tentclima.data.remote.response.AirQualityResponse
 import com.example.tentclima.data.remote.response.CitySearchResult
 import com.example.tentclima.data.remote.response.DailyData
 import com.example.tentclima.data.remote.response.HourlyDataEntry
@@ -18,5 +19,8 @@ interface WeatherRepository {
 
     // Busca lista de cidades
     suspend fun searchCities(query: String): List<CitySearchResult>
+
+    // Busca dados da qualidade do ar
+    suspend fun getAirQualityData(lat: Double, lng: Double): AirQualityResponse
 
 }

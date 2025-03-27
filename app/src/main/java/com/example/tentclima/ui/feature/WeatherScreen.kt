@@ -46,7 +46,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewModelScope
 import com.example.tentclima.R
 import com.example.tentclima.data.citydatabase.CityEntity
+import com.example.tentclima.data.remote.response.AirComponents
+import com.example.tentclima.data.remote.response.AirQualityData
+import com.example.tentclima.data.remote.response.AirQualityIndex
+import com.example.tentclima.data.remote.response.AirQualityResponse
 import com.example.tentclima.data.remote.response.Clouds
+import com.example.tentclima.data.remote.response.Coord
 import com.example.tentclima.data.remote.response.DailyData
 import com.example.tentclima.data.remote.response.HourlyDataEntry
 import com.example.tentclima.data.remote.response.MainData
@@ -301,16 +306,10 @@ fun WeatherScreen(
 
                         Spacer(modifier = Modifier.height(16.dp))
 
-                        LazyColumn(
-                            modifier = Modifier.height(160.dp)
-                        ) {
-                            item {
-                                InformationsSection(
-                                    weatherInfo = weatherInfo,
-                                    modifier = Modifier.padding(vertical = 32.dp)
-                                )
-                            }
-                        }
+                        InformationsSection(
+                            weatherInfo = weatherInfo,
+                            modifier = Modifier.padding(vertical = 32.dp)
+                        )
                     }
                 }
             }
@@ -353,7 +352,8 @@ fun WeatherScreenPreview() {
                 sunset = 4214213,
                 hourlyData = fakeHourlyData,
                 dailyData = fakeDailyData,
-                clouds = 0
+                clouds = 0,
+                airQualityData = fakeAirQualityData
             ),
             context = fakeContext,
             viewModel = hiltViewModel()
@@ -393,5 +393,24 @@ val fakeHourlyData =
         pop = 0.0,
         visibility = 10000,
 
+    )
+)
+
+val fakeAirQualityData = AirQualityResponse(
+    coord = Coord(0.0, 0.0),
+    list = listOf(AirQualityData(
+        dt = 1680000000,
+        main = AirQualityIndex(aqi = 1),
+        components = AirComponents(
+            co = 0.0,
+            no = 0.0,
+            no2 = 0.0,
+            o3 = 0.0,
+            so2 = 0.0,
+            pm25 = 0.0,
+            pm10 = 0.0,
+            nh3 = 0.0
+            )
+        )
     )
 )

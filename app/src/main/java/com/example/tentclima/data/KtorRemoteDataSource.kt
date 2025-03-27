@@ -1,6 +1,7 @@
 package com.example.tentclima.data
 
 import com.example.tentclima.data.remote.RemoteDataSource
+import com.example.tentclima.data.remote.response.AirQualityResponse
 import com.example.tentclima.data.remote.response.CitySearchResult
 import com.example.tentclima.data.remote.response.DailyDataResponse
 import com.example.tentclima.data.remote.response.HourlyDataResponse
@@ -54,5 +55,12 @@ class KtorRemoteDataSource @Inject constructor(
                 emptyList()
             }
         }
+    }
+
+    // Busca dados da qualidade do ar
+    override suspend fun getAirQualityDataResponse(lat: Double, lng: Double): AirQualityResponse {
+        return httpClient
+            .get("https://api.openweathermap.org/data/2.5/air_pollution?lat=$lat&lon=$lng&appid=6d80b1ffd0c1b175173600e21afdd4d3")
+            .body()
     }
 }

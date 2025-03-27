@@ -1,5 +1,6 @@
 package com.example.tentclima.model
 
+import com.example.tentclima.data.remote.response.AirQualityResponse
 import com.example.tentclima.data.remote.response.DailyData
 import com.example.tentclima.data.remote.response.HourlyDataEntry
 import com.example.tentclima.data.remote.response.Wind
@@ -26,7 +27,9 @@ data class WeatherInfo(
     // Previsão horária
     val hourlyData: List<HourlyDataEntry>,
     // Previsão diária
-    val dailyData: List<DailyData>
+    val dailyData: List<DailyData>,
+    // Dados da qualidade do ar
+    val airQualityData: AirQualityResponse
 )
 
 

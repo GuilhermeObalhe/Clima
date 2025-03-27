@@ -89,29 +89,6 @@ private fun SearchCityDialog(
                     )
                 }
             }
-
-//            Row(
-//                modifier = Modifier.fillMaxWidth(),
-//                horizontalArrangement = Arrangement.SpaceBetween
-//            ) {
-//                Button(
-//                    onClick = onDismiss,
-//                    modifier = Modifier.padding(end = 8.dp),
-//                ){
-//                    Text("Cancelar")
-//                }
-//
-//                Button(
-//                    onClick = {
-//                        onCityAdded(currentText) // Botão "Adicionar"
-//                        onDismiss()
-//                    },
-//                    modifier = Modifier.padding(end = 8.dp),
-//                ){
-//                    Text("Adicionar")
-//                }
-//
-//            }
         }
     }
 }

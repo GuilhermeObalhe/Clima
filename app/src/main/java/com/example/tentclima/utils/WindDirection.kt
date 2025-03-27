@@ -1,4 +1,4 @@
-package com.example.tentclima
+package com.example.tentclima.utils
 
 fun windDirection(degrees: Int) : String{
     return when (degrees) {

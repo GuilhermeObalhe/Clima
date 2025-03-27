@@ -40,10 +40,12 @@ class WeatherRepositoryImpl @Inject constructor(
             sunset = response.sys.sunset,
             hourlyData = getHourlyWeatherData(lat, lng),
             dailyData = getDailyWeatherData(lat, lng),
-            clouds = response.clouds.all
+            clouds = response.clouds.all,
+            airQualityData = getAirQualityData(lat, lng)
         )
     }
 
+    // Previsão horária
     override suspend fun getHourlyWeatherData(lat: Double, lng: Double): List<HourlyDataEntry> {
         val response = remoteDataSource.getHourlyWeatherDataResponse(lat, lng)
         return response.list // Ajuste conforme a estrutura real do response
@@ -58,4 +60,8 @@ class WeatherRepositoryImpl @Inject constructor(
     // Busca lista de cidades
     override suspend fun searchCities(query: String) =
         remoteDataSource.searchCities(query)
+
+    // Busca dados da qualidade do ar
+    override suspend fun getAirQualityData(lat: Double, lng: Double) =
+        remoteDataSource.getAirQualityDataResponse(lat, lng)
 }

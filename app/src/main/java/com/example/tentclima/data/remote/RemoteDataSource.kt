@@ -1,5 +1,6 @@
 package com.example.tentclima.data.remote
 
+import com.example.tentclima.data.remote.response.AirQualityResponse
 import com.example.tentclima.data.remote.response.CitySearchResult
 import com.example.tentclima.data.remote.response.DailyDataResponse
 import com.example.tentclima.data.remote.response.HourlyDataResponse
@@ -17,4 +18,6 @@ interface RemoteDataSource {
 
     // Buscar lista de cidades
     suspend fun searchCities(query: String): List<CitySearchResult>
+
+    suspend fun getAirQualityDataResponse(lat: Double, lng: Double): AirQualityResponse
 }
