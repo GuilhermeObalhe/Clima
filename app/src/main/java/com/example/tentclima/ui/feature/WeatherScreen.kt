@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -38,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -218,7 +218,7 @@ fun WeatherScreen(
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = weatherInfo.dayOfWeek,
+                            text = (weatherInfo.dayOfWeek).replaceFirstChar{it.uppercase()},
                             color = Color.White,
                             style = MaterialTheme.typography.bodyLarge
                         )
@@ -252,7 +252,7 @@ fun WeatherScreen(
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = weatherInfo.condition,
+                            text = weatherInfo.condition.replaceFirstChar{it.uppercase()},
                             color = Color.White,
                             style = MaterialTheme.typography.bodyMedium
                         )
@@ -276,8 +276,7 @@ fun WeatherScreen(
                         }
 
                         Surface(
-                            modifier = Modifier.fillMaxWidth(0.85f).height(110.dp)
-                                .padding(start = 24.dp),
+                            modifier = Modifier.fillMaxWidth(0.85f).height(110.dp),
                             color = Color.Gray.copy(alpha = 0.2f),
                             shape = RoundedCornerShape(16.dp),
                         ) {
@@ -295,8 +294,9 @@ fun WeatherScreen(
                             textAlign = TextAlign.Center
                         )
 
+                        // Previsão diária
                         Surface(
-                            modifier = Modifier.fillMaxWidth(0.6f).height(220.dp),
+                            modifier = Modifier.fillMaxWidth(0.85f).height(220.dp),
                             color = Color.Gray.copy(alpha = 0.2f),
                             shape = RoundedCornerShape(16.dp),
                         ) {

@@ -1,6 +1,7 @@
 package com.example.tentclima.ui.feature.cards
 
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -11,13 +12,19 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.example.tentclima.utils.windDirection
+import androidx.compose.ui.unit.sp
 import com.example.tentclima.model.WeatherInfo
 import com.example.tentclima.ui.feature.toFormattedTime
 import com.example.tentclima.utils.airQualityWord
+import com.example.tentclima.utils.windDirection
+import kotlin.math.roundToInt
 
 @Composable
 fun InformationsSection(weatherInfo: WeatherInfo, modifier: Modifier = Modifier) {
@@ -30,102 +37,266 @@ fun InformationsSection(weatherInfo: WeatherInfo, modifier: Modifier = Modifier)
             modifier = Modifier.padding(16.dp)
         ) {
             item{
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Sensação térmica: ${weatherInfo.feelsLike} °C",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Sensação térmica: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${weatherInfo.feelsLike} °C")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Umidade: ${weatherInfo.humidity}%",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Umidade: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${weatherInfo.humidity}%")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Pressão: ${weatherInfo.pressure} mbar",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Pressão: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${weatherInfo.pressure} mbar")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Vento: ${weatherInfo.wind.speed} m/s ${windDirection(weatherInfo.wind.deg)}",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Vento: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${(weatherInfo.wind.speed*3.6).roundToInt()} km/h ${windDirection(weatherInfo.wind.deg)}")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Nuvens: ${weatherInfo.clouds}%",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Nuvens: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${weatherInfo.clouds}%")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Visibilidade: ${weatherInfo.visibility / 1000} km",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Visibilidade: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${weatherInfo.visibility / 1000} km")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Nascer do sol: ${weatherInfo.sunrise.toFormattedTime()}",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Nascer do sol: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append(weatherInfo.sunrise.toFormattedTime())
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Pôr do sol: ${weatherInfo.sunset.toFormattedTime()}",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Pôr do sol: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append(weatherInfo.sunset.toFormattedTime())
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Probabilidade de chuva: ${(weatherInfo.dailyData.first().pop*100).toInt()}%",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Probabilidade de chuva: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${(weatherInfo.dailyData.first().pop*100).toInt()}%")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Precipitação: ${if (weatherInfo.dailyData.first().rain == null) 0 else weatherInfo.dailyData.first().rain} mm",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Precipitação: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${if (weatherInfo.dailyData.first().rain == null) 0 else weatherInfo.dailyData.first().rain} mm")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
 
                 HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+                Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
+                Row(
                     modifier = Modifier.fillMaxWidth().padding(start = 16.dp),
-                    text = "Qualidade do ar: ${weatherInfo.airQualityData.list.first().main.aqi} - ${airQualityWord(weatherInfo.airQualityData.list.first().main.aqi)}",
-                    color = Color.White,
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                    verticalAlignment = Alignment.Bottom,
+                ) {
+                    Text(
+                        text = "Qualidade do ar: ",
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = buildAnnotatedString {
+                            withStyle(style = SpanStyle(fontSize = 18.sp)) {
+                                append("${weatherInfo.airQualityData.list.first().main.aqi} - ${airQualityWord(weatherInfo.airQualityData.list.first().main.aqi)}")
+                            }
+                        },
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
             }
         }
     }

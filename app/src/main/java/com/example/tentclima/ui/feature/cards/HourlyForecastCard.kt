@@ -34,7 +34,7 @@ fun HourlyForecastCard(hourlyData: List<HourlyDataEntry>) {
 @Composable
 fun HourlyForecastItem(hourly: HourlyDataEntry) {
     Column(
-        modifier = Modifier.padding(top = 8.dp, end = 8.dp)
+        modifier = Modifier.padding(start = 8.dp, top = 8.dp, end = 8.dp)
     ){
         Text(
             modifier = Modifier.width(55.dp),

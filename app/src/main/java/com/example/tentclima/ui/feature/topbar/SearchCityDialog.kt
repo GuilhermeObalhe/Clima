@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.tentclima.ui.feature.WeatherViewModel
+import com.example.tentclima.ui.theme.AzulAcinzentadoClaro
 
 @Composable
 fun SearchCityButton(
@@ -56,7 +57,9 @@ private fun SearchCityDialog(
 ) {
     ModalBottomSheet(
         onDismissRequest = onDismiss,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        containerColor = AzulAcinzentadoClaro,
+        contentColor = Color.Black
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -69,7 +72,12 @@ private fun SearchCityDialog(
                     viewModel.searchCities(newText) // Dispara a busca
                 },
                 label = { Text("Digite o nome da cidade") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = TextFieldDefaults.colors(
+                    Color.Black.copy(alpha = 0.8f), // Cor do texto
+                    Color.Gray.copy(alpha = 0.5f), // Cor do texto do placeholder
+                    Color.White.copy(alpha = 0.5f), // Cor do texto do placeholder quando o campo está selecionado
+                )
             )
 
             // Lista de sugestões

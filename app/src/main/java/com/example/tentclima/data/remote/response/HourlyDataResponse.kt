@@ -29,14 +29,14 @@ data class HourlyDataEntry(
 @Serializable
 data class MainData(
     val temp: Double,
-    @SerialName("feels_like") val feelsLike: Double, // 添加 SerialName
-    @SerialName("temp_min") val tempMin: Double,     // 添加 SerialName
-    @SerialName("temp_max") val tempMax: Double,     // 添加 SerialName
+    @SerialName("feels_like") val feelsLike: Double,
+    @SerialName("temp_min") val tempMin: Double,
+    @SerialName("temp_max") val tempMax: Double,
     val pressure: Int,
     @SerialName("sea_level") val seaLevel: Int,
     @SerialName("grnd_level") val grndLevel: Int,
     val humidity: Int,
-    @SerialName("temp_kf") val tempKf: Double        // 添加 SerialName
+    @SerialName("temp_kf") val tempKf: Double
 )
 
 
