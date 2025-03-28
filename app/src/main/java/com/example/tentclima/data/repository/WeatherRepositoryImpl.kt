@@ -48,13 +48,13 @@ class WeatherRepositoryImpl @Inject constructor(
     // Previsão horária
     override suspend fun getHourlyWeatherData(lat: Double, lng: Double): List<HourlyDataEntry> {
         val response = remoteDataSource.getHourlyWeatherDataResponse(lat, lng)
-        return response.list // Ajuste conforme a estrutura real do response
+        return response.list
     }
 
     // Previsão diária
     override suspend fun getDailyWeatherData(lat: Double, lng: Double): List<DailyData> {
         val response = remoteDataSource.getDailyWeatherDataResponse(lat, lng)
-        return response.list // Ajuste conforme a estrutura real do response
+        return response.list
     }
 
     // Busca lista de cidades

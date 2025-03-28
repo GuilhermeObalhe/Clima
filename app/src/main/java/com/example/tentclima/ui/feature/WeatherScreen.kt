@@ -37,7 +37,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -92,12 +91,9 @@ private fun filterDailyData(dailyData: List<DailyData>): List<DailyData> {
         TODO("VERSION.SDK_INT < O")
     }
     return dailyData.filter { daily ->
-        // Converte o timestamp para LocalDate
         val date = Instant.ofEpochSecond(daily.dt)
             .atZone(ZoneId.systemDefault())
             .toLocalDate()
-
-        // Verifica se a data é posterior ao dia atual
         date.isAfter(today) || date == today.plusDays(1)
     }
 }
@@ -119,7 +115,7 @@ fun WeatherScreen(
     weatherInfo: WeatherInfo?,
     viewModel: WeatherViewModel
 ) {
-    val coroutineScope = rememberCoroutineScope()  // Adicione esta linha
+    val coroutineScope = rememberCoroutineScope()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val cities by viewModel.citiesFlow.collectAsState()
 
@@ -133,7 +129,7 @@ fun WeatherScreen(
                     },
                     onCityDeleted = { city ->
                         viewModel.viewModelScope.launch {
-                            viewModel.deleteCity(city.id) // Chama a função de exclusão no ViewModel
+                            viewModel.deleteCity(city.id)
                         }
                     }
                 )
@@ -145,7 +141,6 @@ fun WeatherScreen(
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
                 topBar = {
-                    // Seu topBar existente
                     Row(
                         modifier = Modifier.fillMaxWidth()
                             .padding(start = 24.dp, top = 16.dp, end = 24.dp),
@@ -179,7 +174,7 @@ fun WeatherScreen(
                                         viewModel.saveCity(
                                             CityEntity(
                                                 name = it.name,
-                                                country = it.country, // Ajuste conforme sua classe de resultado
+                                                country = it.country,
                                                 latitude = it.lat,
                                                 longitude = it.lon
                                             )
@@ -192,7 +187,7 @@ fun WeatherScreen(
                     }
                 },
                 contentColor = Color.White,
-                containerColor = Color.Transparent //if (weatherInfo.isDay) BlueSky else Color.DarkGray
+                containerColor = Color.Transparent
             )
             {
                 Box(modifier = Modifier.fillMaxSize()) {

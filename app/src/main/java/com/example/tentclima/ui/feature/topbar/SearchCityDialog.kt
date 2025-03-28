@@ -66,17 +66,17 @@ private fun SearchCityDialog(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             TextField(
-                value = currentText, // <-- Usa o parâmetro recebido
+                value = currentText,
                 onValueChange = {newText ->
-                    onTextChange(newText) // Atualiza o texto
-                    viewModel.searchCities(newText) // Dispara a busca
+                    onTextChange(newText)
+                    viewModel.searchCities(newText)
                 },
                 label = { Text("Digite o nome da cidade") },
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.colors(
-                    Color.Black.copy(alpha = 0.8f), // Cor do texto
-                    Color.Gray.copy(alpha = 0.5f), // Cor do texto do placeholder
-                    Color.White.copy(alpha = 0.5f), // Cor do texto do placeholder quando o campo está selecionado
+                    Color.Black.copy(alpha = 0.8f),
+                    Color.Gray.copy(alpha = 0.5f),
+                    Color.White.copy(alpha = 0.5f),
                 )
             )
 
@@ -91,8 +91,8 @@ private fun SearchCityDialog(
                         modifier = Modifier
                             .padding(8.dp)
                             .clickable {
-                                onCityAdded(city.name) // Adiciona a cidade
-                                onDismiss() // Fecha o diálogo
+                                onCityAdded(city.name)
+                                onDismiss()
                             }
                     )
                 }

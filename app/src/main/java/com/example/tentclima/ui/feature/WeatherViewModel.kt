@@ -46,7 +46,6 @@ class WeatherViewModel @Inject constructor(
         }
     }
 
-    // Método para buscar as cidades
     fun searchCities(query: String) {
         viewModelScope.launch {
             try {
@@ -54,15 +53,13 @@ class WeatherViewModel @Inject constructor(
                 _searchResults.clear()
                 _searchResults.addAll(results)
             } catch (e: Exception) {
-                // Trate erros (ex: exiba uma mensagem de erro)
                 _searchResults.clear()
             }
         }
     }
 
-    // Recuperar cidades
     init {
-        loadCities() // Carrega as cidades ao iniciar o ViewModel
+        loadCities()
     }
 
     private fun loadCities() {
@@ -73,7 +70,7 @@ class WeatherViewModel @Inject constructor(
 
     suspend fun saveCity(city: CityEntity) {
         cityRepository.insertCity(city)
-        loadCities() // Atualiza a lista após salvar
+        loadCities()
     }
 
     fun deleteCity(cityId: Int) {

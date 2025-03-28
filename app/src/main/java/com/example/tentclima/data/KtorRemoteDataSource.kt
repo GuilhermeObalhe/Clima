@@ -49,8 +49,8 @@ class KtorRemoteDataSource @Inject constructor(
             parameter("limit", 5)
             parameter("appid", "6d80b1ffd0c1b175173600e21afdd4d3")
         }.run {
-            if (status.isSuccess()) { // Verifica se a requisição foi bem-sucedida
-                body<List<CitySearchResult>>() // Desserializa apenas se OK
+            if (status.isSuccess()) {
+                body<List<CitySearchResult>>()
             } else {
                 emptyList()
             }

@@ -27,7 +27,7 @@ import com.example.tentclima.utils.windDirection
 import kotlin.math.roundToInt
 
 @Composable
-fun InformationsSection(weatherInfo: WeatherInfo, modifier: Modifier = Modifier) {
+fun InformationsSection(weatherInfo: WeatherInfo) {
     Surface(
         modifier = Modifier.fillMaxWidth().padding(16.dp),
         color = Color.Gray.copy(alpha = 0.2f),

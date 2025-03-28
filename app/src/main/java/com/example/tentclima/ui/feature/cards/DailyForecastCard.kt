@@ -39,7 +39,7 @@ import kotlin.math.roundToInt
 
 @Composable
 fun DailyForecastCard(dailyData: List<DailyData>) {
-    val weekdays = listOf("Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom")
+    val weekdays = listOf("Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom")
     val today = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         LocalDate.now()
     } else {
@@ -208,11 +208,11 @@ private fun DailyForecastCardPreview() {
 
 val fakeDailyData = List(7) { index ->
     DailyData(
-        dt = System.currentTimeMillis() / 1000 + (index * 86400), // Timestamp futuro
+        dt = System.currentTimeMillis() / 1000 + (index * 86400),
         sunrise = 0,
         sunset = 0,
         temp = Temp(
-            day = 25.0 + index * 2.0, // Temperaturas variadas para visualização
+            day = 25.0 + index * 2.0,
             min = 20.0,
             max = 30.0,
             night = 22.0,
@@ -232,7 +232,7 @@ val fakeDailyData = List(7) { index ->
                 id = 800,
                 main = "Clear",
                 description = "Clear sky",
-                icon = "01d" // Ícone válido para o preview
+                icon = "01d"
             )
         ),
         speed = 5.0,
